@@ -20,7 +20,7 @@ The principal issue with the I94 immigration data is that the information is sto
 We are dealing with large amount of data and we have the need to transform it to allow further analysis. This pipeline is intended to run it annually or semi-annually.  Below is explained this process.
 
 ##### Sources
-We have four sources of data that are stored in a AWS S3 bucket: 
+We have four sources of data that are stored in a Google Cloud Storage bucket: 
 - I94 Immigration Data: US National Tourism and Trade Office data of visitors. Source: [I-94 Record](https://travel.trade.gov/research/reports/i94/historical/2016.html)
 - World Temperature Data: Information of temperature by city. Source: [Kaggle](https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data)
 - U.S. City Demographic Data: Demographic statistics by state of the U.S. Source: [Opensoft](https://public.opendatasoft.com/explore/dataset/us-cities-demographics/export/)
@@ -28,7 +28,7 @@ We have four sources of data that are stored in a AWS S3 bucket:
 
 ##### Extraction
 
-The sources are loaded to a S3 bucket in order that the EMR cluster can access the data with PySpark
+The sources are loaded to a Google Cloud Storage bucket in order that the Dataproc cluster can access the data with PySpark
 
 ##### Transformation
 
@@ -44,7 +44,7 @@ Once the data is loaded in a PySpark dataframe the following transformation are 
 
 ##### Load
 
-The resulting dataframe was loaded into a S3 bucket in order to long-term storage.
+The resulting dataframe was loaded into a Google Cloud Storage bucket in order to long-term storage.
 
 A diagram of the process is below:
 
@@ -55,7 +55,7 @@ A diagram of the process is below:
 
 - `transform.py`: Python script to submit to Spark
 
-- `submit_onejob.sh`: Bash script to run the job on Dataproc`
+- `submit_onejob.sh`: Bash script to run the job on Dataproc
 
 - `data_dictionary.xlsx`: Excel file with meta data of the transformed data table
 
